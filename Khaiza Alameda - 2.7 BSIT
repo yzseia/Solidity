@@ -1,30 +1,32 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25; // as you can see in 1st line i put the version of solidity I used
+pragma solidity >=0.6.12 <0.9.0;
 
-// So lets create a contract, i will name it MyToken
 contract MyToken {
+    // public variables
+    string public tokenName;
+    string public tokenAbbrv;
+    uint public totalSupply;
 
-    // Declare public variables
-    string public tokenName = "Khaiza";
-    string public tokenAbbrv = "Alameda";
-//Then We declare a uint (unsigned integer)
-    uint public totalSupply = 0; 
+    // mapping variable
+    mapping(address => uint) public balances;
 
-    // Declare a public mapping to store token balances for each address
-    mapping(address => uint) public balance;
-
-    // Next is we gonna create a mint or new token and assign them in specific address
-    function mint(address _address, uint _value) public {
-        totalSupply += _value;
-        balance[_address] += _value;
+    // constructor
+    constructor() {
+        tokenName = "Khaiza";
+        tokenAbbrv = "Alameda";
+        totalSupply = 0;
     }
 
-    // Next is we gonna create a burn for existing token from spefici address.
+    // mint function
+    function mint(address _address, uint _value) public {
+        totalSupply += _value;
+        balances[_address] += _value;
+    }
+
+    // burn function
     function burn(address _address, uint _value) public {
-        // Check if the balance of the address is greater than or equal to the value to be burned
-        if (balance[_address] >= _value) {
-            totalSupply -= _value;
-            balance[_address] -= _value;
-        }
+        require(balances[_address] >= _value, "Insufficient balance");
+        totalSupply -= _value;
+        balances[_address] -= _value;
     }
 }
