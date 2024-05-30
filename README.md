@@ -14,10 +14,10 @@ Contract Details
 
 Public Variables
 
-- `string public tokenName` - The name of the token.
-- `string public tokenAbbrv` - The abbreviation of the token.
-- `uint public totalSupply` - The total supply of the token.
-- `mapping(address => uint) public balances` - A mapping to store the balance of each address.
+`string public tokenName` - The name of the token.
+`string public tokenAbbrv` - The abbreviation of the token.
+`uint public totalSupply` - The total supply of the token.
+`mapping(address => uint) public balances` - A mapping to store the balance of each address.
 
 Constructor
 
@@ -45,8 +45,8 @@ function mint(address _address, uint _value) public {
 ```
 
 - Parameters:
-  - `_address`: The address to receive the minted tokens.
-  - `_value`: The amount of tokens to be minted.
+  `_address`: The address to receive the minted tokens.
+  `_value`: The amount of tokens to be minted.
 
 Burn
 
@@ -61,10 +61,10 @@ function burn(address _address, uint _value) public {
 ```
 
 - Parameters:
-  - `_address`: The address from which the tokens will be burned.
-  - `_value`: The amount of tokens to be burned.
-- **Requirements**:
-  - The balance of `_address` must be greater than or equal to `_value`.
+  `_address`: The address from which the tokens will be burned.
+  `_value`: The amount of tokens to be burned.
+- Requirements:
+  The balance of `_address` must be greater than or equal to `_value`.
 
 License
 
